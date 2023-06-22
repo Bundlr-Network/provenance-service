@@ -18,7 +18,7 @@ pub async fn run_server() -> std::io::Result<()> {
         App::new()
             .wrap(middleware::Logger::default())
             .service(web::resource("/").route(web::get().to(index::index_route)))
-            .service(web::resource("/upload")
+            .service(web::resource("/record")
             .guard(guard::Header("X-API-Key", "76793ab1-dd7b-4c67-bf67-24f0deb32446"))
             .route(web::post().to(upload::upload_route))
         )
